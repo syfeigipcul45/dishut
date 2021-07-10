@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Web\BerandaController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[BerandaController::class, 'index'])->name('beranda');
 
 Auth::routes();
 
