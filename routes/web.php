@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\BerandaController as AdminBerandaController;
+use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Web\BerandaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +23,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Admin
+Route::prefix('/admin')->group(function(){
+    Route::get('/beranda', [AdminBerandaController::class, 'index'])->name('admin.beranda');
+    //Berita
+    Route::resource('berita', BeritaController::class);
+});
