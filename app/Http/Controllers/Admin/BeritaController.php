@@ -44,7 +44,7 @@ class BeritaController extends Controller
         if ($file) {
             $file = $request->file('gambar_berita');
             $nama_file = time() . "_" . $file->getClientOriginalName();
-            $tujuan_upload = 'user/gambar_berita';
+            $tujuan_upload = 'admin/images/gambar_berita';
             $file->move($tujuan_upload, $nama_file);
             $berita->gambar_berita = $nama_file;
         }
@@ -92,8 +92,8 @@ class BeritaController extends Controller
         if ($file) {
             $file = $request->file('gambar_berita');
             $nama_file = time() . "_" . $file->getClientOriginalName();
-            $tujuan_upload = 'user/gambar_berita';
-            $image_path = public_path('user/gambar_berita/' . $berita->gambar_berita);
+            $tujuan_upload = 'admin/images/gambar_berita';
+            $image_path = public_path('admin/images/gambar_berita/' . $berita->gambar_berita);
             if (File::exists($image_path)) {
                 $e =  File::delete($image_path);
             }
@@ -117,7 +117,7 @@ class BeritaController extends Controller
     public function destroy($id)
     {
         $berita = Berita::find($id);
-        $image_path = public_path('user/gambar_berita/' . $berita->gambar_berita);
+        $image_path = public_path('admin/images/gambar_berita/' . $berita->gambar_berita);
         if (File::exists($image_path)) {
             $e =  File::delete($image_path);
         }

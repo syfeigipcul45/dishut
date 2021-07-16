@@ -66,7 +66,7 @@ active
 <main id="main">
 
     <!-- ======= About Us Section ======= -->
-    <section id="about-us" class="about-us">
+    <!-- <section id="about-us" class="about-us">
         <div class="container" data-aos="fade-up">
 
             <div class="row content">
@@ -93,7 +93,49 @@ active
             </div>
 
         </div>
-    </section><!-- End About Us Section -->
+    </section> -->
+    <!-- End About Us Section -->
+
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+                @foreach($berita as $item)
+                <div class="col-lg-4  col-md-10 d-flex align-items-stretch" data-aos="fade-up">
+                    <article class="entry">
+
+                        <div class="text-center">
+                            @if($item->gambar_berita)
+                            <img src="{{asset('admin/images/gambar_berita/'.$item->gambar_berita)}}" alt="{{asset('admin/images/gambar_berita/'.$item->gambar_berita)}}" class="img-fluid">
+                            @endif
+                        </div>
+
+                        <h2 class="entry-title">
+                            <a href="{{route('web.slug.berita', $item->slug_judul)}}"><h5>{{$item->judul_berita}}</h5></a>
+                        </h2>
+
+                        <div class="entry-meta">
+                            <ul>
+                                <li class="d-flex align-items-center"><i class="bi bi-person"></i><span style="font-size: 10pt;">Administrator</span></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i><time datetime="{{$item->created_at}}"><span style="font-size: 10pt;">{{$item->created_at}}</span></time></li>
+                            </ul>
+                        </div>
+
+                        <div class="entry-content">
+                            <p>
+                                <?php echo substr($item->isi_berita, 0, 300) ?> ....
+                            </p>
+                            <div class="read-more">
+                                <a href="{{route('web.slug.berita', $item->slug_judul)}}">Read More</a>
+                            </div>
+                        </div>
+
+                    </article>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">

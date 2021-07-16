@@ -16,6 +16,7 @@ class Berita extends Model
         'slug_judul',
         'isi_berita',
         'gambar_berita',
+        'dibaca'
     ];
 
     public function getCreatedAtAttribute()

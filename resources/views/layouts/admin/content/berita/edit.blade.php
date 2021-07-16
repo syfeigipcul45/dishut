@@ -44,7 +44,7 @@ active
                                     <div class="form-line">
                                         <span style="font-size: 12px; font-style: italic; color: red;">*) File harus berupa .jpg, .jpeg, .png, maksimal file sebesar 5 MB</span>
                                         <input type="file" class="form-control" name="gambar_berita" id="gambar_berita" accept="images/*">
-                                        <br><img class="b p-xs" style="max-width: 350px; max-height: 150px;" src="{{asset('user/gambar_berita/'.$berita->gambar_berita)}}" id="output">
+                                        <br><img class="b p-xs" style="max-width: 350px; max-height: 150px;" src="{{asset('admin/images/foto-berita/'.$berita->gambar_berita)}}" id="output">
                                     </div>
                                 </div>
                             </div>

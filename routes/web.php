@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BerandaController as AdminBerandaController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Web\BerandaController;
+use App\Http\Controllers\Web\BeritaController as WebBeritaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Web
 Route::get('/',[BerandaController::class, 'index'])->name('beranda');
+Route::get('/berita', [WebBeritaController::class, 'index'])->name('web.berita');
+Route::get('/berita/{slug}', [WebBeritaController::class, 'show'])->name('web.slug.berita');
+Route::get('/cari-berita', [WebBeritaController::class, 'search'])->name('berita.search');
 
 Auth::routes();
 

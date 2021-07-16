@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Berita;
 use Illuminate\Http\Request;
 
 class BerandaController extends Controller
@@ -14,7 +15,8 @@ class BerandaController extends Controller
      */
     public function index()
     {
-        return view('layouts.web.content.beranda');
+        $berita = Berita::orderBy('created_at', 'desc')->limit(6)->get();
+        return view('layouts.web.content.beranda', compact('berita'));
     }
 
     /**

