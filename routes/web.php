@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BerandaController as AdminBerandaController;
 use App\Http\Controllers\Admin\BeritaController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Web\BerandaController;
 use App\Http\Controllers\Web\BeritaController as WebBeritaController;
 use Illuminate\Support\Facades\Auth;
@@ -18,12 +19,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Web
+Route::get('login', [AuthController::class, 'showFormLogin'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
+Route::group(['middleware' => 'auth'], function () {
+ 
+    Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+ 
+});
+
 Route::get('/',[BerandaController::class, 'index'])->name('beranda');
 Route::get('/berita', [WebBeritaController::class, 'index'])->name('web.berita');
 Route::get('/berita/{slug}', [WebBeritaController::class, 'show'])->name('web.slug.berita');
 Route::get('/cari-berita', [WebBeritaController::class, 'search'])->name('berita.search');
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
