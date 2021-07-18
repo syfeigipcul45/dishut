@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BerandaController as AdminBerandaController;
 use App\Http\Controllers\Admin\BeritaController;
+use App\Http\Controllers\Admin\SlideGambarController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Web\BerandaController;
 use App\Http\Controllers\Web\BeritaController as WebBeritaController;
@@ -43,4 +44,9 @@ Route::prefix('/admin')->group(function(){
     Route::get('/beranda', [AdminBerandaController::class, 'index'])->name('admin.beranda');
     //Berita
     Route::resource('berita', BeritaController::class);
+    //slide gambar
+    Route::get('/slide-gambar', [SlideGambarController::class, 'index'])->name('slide.index');
+    Route::post('/slide-gambar/store', [SlideGambarController::class, 'store'])->name('slide.store');
+    Route::post('/slide-gambar/{id}', [SlideGambarController::class, 'destroy'])->name('slide.destroy');
+    Route::post('/slide-gambar/{id}/update', [SlideGambarController::class, 'update'])->name('slide.update');
 });

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title')</title>
+    <title>Dashboard | @yield('title')</title>
     <!-- Favicon-->
     <link rel="icon" href="{{asset('admin/images/logo.png')}}" type="image/x-icon">
 
@@ -57,6 +57,11 @@
 
     <!-- Jquery Core Js -->
     <script src="{{asset('admin/plugins/jquery/jquery.min.js') }}"></script>
+
+    <!-- IziToastAlert -->
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/alert/css/iziToast.min.css')}}">
+    <!-- IziToastAlert -->
+    <script src="{{asset('admin/alert/js/iziToast.min.js') }}"></script>
 
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
@@ -130,14 +135,20 @@
                             <span>Berita</span>
                         </a>
                     </li>
+                    <li class="@yield('slide')">
+                        <a href="{{route('slide.index')}}">
+                            <i class="material-icons">perm_media</i>
+                            <span>Slide Gambar</span>
+                        </a>
+                    </li>
                     <li class="">
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">accessibility</i>
-                            <span>Pegawai</span>
+                            <i class="material-icons">local_activity</i>
+                            <span>Halaman Web</span>
                         </a>
                         <ul class="ml-menu">
                             <li class="">
-                                <a href="">Data Pegawai</a>
+                                <a href="">Slide Gambar</a>
                             </li>
                             <li class="">
                                 <a href="">Jabatan</a>

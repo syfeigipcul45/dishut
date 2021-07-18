@@ -48,7 +48,7 @@ active
                                     @php $no = 1; @endphp
                                     @foreach($berita as $item)
                                     <tr>
-                                        <td>{{$no++}}</td>
+                                        <td>{{$no++}}.</td>
                                         <td>{{$item->created_at}}</td>
                                         <td>{{$item->judul_berita}}</td>
                                         <td>{{substr($item->isi_berita,0,100)}}</td>

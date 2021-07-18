@@ -14,9 +14,24 @@ active
     <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
         <div class="carousel-inner" role="listbox">
-
+            @foreach($slide as $item)
+                @if($item->id == 1)
+                    @php $active = 'active'; @endphp
+                @else
+                    @php $active = ''; @endphp
+                @endif
+                <div class="carousel-item {{$active}}" style="background-image: url(web/slide-gambar/{{$item->file_gambar}});">
+                    <div class="carousel-container">
+                        <div class="carousel-content animate__animated animate__fadeInUp">
+                            <h2>Sequi ea ut et est quaerat</h2>
+                            <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                            <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
             <!-- Slide 1 -->
-            <div class="carousel-item active" style="background-image: url(web/img/slide/slide-1.jpg);">
+            <!-- <div class="carousel-item active" style="background-image: url(web/img/slide/slide-1.jpg);">
                 <div class="carousel-container">
                     <div class="carousel-content animate__animated animate__fadeInUp">
                         <h2>Welcome to <span>Company</span></h2>
@@ -24,10 +39,10 @@ active
                         <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Slide 2 -->
-            <div class="carousel-item" style="background-image: url(web/img/slide/slide-2.jpg);">
+            <!-- <div class="carousel-item" style="background-image: url(web/img/slide/slide-2.jpg);">
                 <div class="carousel-container">
                     <div class="carousel-content animate__animated animate__fadeInUp">
                         <h2>Lorem Ipsum Dolor</h2>
@@ -35,10 +50,10 @@ active
                         <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Slide 3 -->
-            <div class="carousel-item" style="background-image: url(web/img/slide/slide-3.jpg);">
+            <!-- <div class="carousel-item" style="background-image: url(web/img/slide/slide-3.jpg);">
                 <div class="carousel-container">
                     <div class="carousel-content animate__animated animate__fadeInUp">
                         <h2>Sequi ea ut et est quaerat</h2>
@@ -46,7 +61,7 @@ active
                         <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
@@ -111,7 +126,9 @@ active
                         </div>
 
                         <h2 class="entry-title">
-                            <a href="{{route('web.slug.berita', $item->slug_judul)}}"><h5>{{$item->judul_berita}}</h5></a>
+                            <a href="{{route('web.slug.berita', $item->slug_judul)}}">
+                                <h5>{{$item->judul_berita}}</h5>
+                            </a>
                         </h2>
 
                         <div class="entry-meta">

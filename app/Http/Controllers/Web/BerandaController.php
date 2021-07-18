@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Berita;
+use App\Models\SlideGambar;
 use Illuminate\Http\Request;
 
 class BerandaController extends Controller
@@ -16,7 +17,8 @@ class BerandaController extends Controller
     public function index()
     {
         $berita = Berita::orderBy('created_at', 'desc')->limit(6)->get();
-        return view('layouts.web.content.beranda', compact('berita'));
+        $slide = SlideGambar::all();
+        return view('layouts.web.content.beranda', compact('berita', 'slide'));
     }
 
     /**
