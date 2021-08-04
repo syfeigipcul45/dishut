@@ -135,6 +135,12 @@
                             <span>Berita</span>
                         </a>
                     </li>
+                    <li class="@yield('pengaduan')">
+                        <a href="{{route('pengaduan.index')}}">
+                            <i class="material-icons">article</i>
+                            <span>Pengaduan</span>
+                        </a>
+                    </li>
                     <li class="@yield('slide')">
                         <a href="{{route('slide.index')}}">
                             <i class="material-icons">perm_media</i>

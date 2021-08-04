@@ -1,10 +1,10 @@
 @extends('layouts.admin.template.template')
 
 @section('title')
-Edit Berita
+Daftar Pengaduan
 @endsection
 
-@section('berita')
+@section('pengaduan')
 active
 @endsection
 
@@ -19,40 +19,38 @@ active
                         <h2>Edit Berita</h2>
                     </div>
                     <div class="body">
-                        <form action="{{route('berita.update', $berita->id)}}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
-                            <div class="col-sm-12">
-                                <h2 class="card-inside-title">Judul Berita</h2>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" name="judul_berita" id="judul_berita" placeholder="Judul Berita" value="{{$berita->judul_berita}}" required>
-                                    </div>
+                        <div class="col-sm-12">
+                            <h2 class="card-inside-title">Nama</h2>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" value="{{$pengaduan->nama}}" readonly>
                                 </div>
                             </div>
-                            <div class="col-sm-12">
-                                <h2 class="card-inside-title">Isi Berita</h2>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <textarea name="isi_berita" id="tinymce">{{$berita->isi_berita}}</textarea>
-                                    </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h2 class="card-inside-title">Email</h2>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" value="{{$pengaduan->email}}" readonly>
                                 </div>
                             </div>
-                            <div class="col-sm-12">
-                                <h2 class="card-inside-title">Gambar Berita</h2>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <span style="font-size: 12px; font-style: italic; color: red;">*) File harus berupa .jpg, .jpeg, .png, maksimal file sebesar 5 MB</span>
-                                        <input type="file" class="form-control" name="gambar_berita" id="gambar_berita" accept="images/*">
-                                        <br><img class="b p-xs" style="max-width: 350px; max-height: 150px;" src="{{asset('admin/images/gambar_berita/'.$berita->gambar_berita)}}" id="output">
-                                    </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h2 class="card-inside-title">Subjek</h2>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" value="{{$pengaduan->subjek}}" readonly>
                                 </div>
                             </div>
-                            <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
-                            <a href="{{route('berita.index')}}" class="btn btn-warning waves-effect" role="button" aria-haspopup="true" aria-expanded="false">
-                                KEMBALI
-                            </a>
-                        </form>
+                        </div>
+                        <div class="col-sm-12">
+                            <h2 class="card-inside-title">Isi Pesan</h2>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea name="isi_berita" id="tinymce" disabled>{{$pengaduan->isi_pesan}}</textarea>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -153,38 +151,6 @@ active
         skin: useDarkMode ? 'oxide-dark' : 'oxide',
         content_css: useDarkMode ? 'dark' : 'default',
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-    });
-
-    $('#gambar_berita').change(function() {
-        let size = document.getElementById('gambar_berita').files[0].size / 1024 / 1024;
-        let extension = $('#gambar_berita').val().split('.').pop().toLowerCase();
-        if ((jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) && size > 5) {
-            iziToast.error({
-                title: 'Error',
-                message: 'File Tidak Sesuai dan ukuran file terlalu besar',
-                position: 'topCenter'
-            });
-            $('#gambar_berita').val("");
-        } else if ((jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1)) {
-            iziToast.error({
-                title: 'Error',
-                message: 'File tidak sesuai',
-                position: 'topCenter'
-            });
-            $('#gambar_berita').val("");
-            return false;
-        } else if (size > 5) {
-            iziToast.error({
-                title: 'Error',
-                message: 'File terlalu besar',
-                position: 'topCenter'
-            });
-            $('#gambar_berita').val("");
-            return false;
-        } else {
-            let output = document.getElementById('output');
-            output.src = URL.createObjectURL(event.target.files[0]);
-        }
     });
 </script>
 @endsection

@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\Admin\BerandaController as AdminBerandaController;
 use App\Http\Controllers\Admin\BeritaController;
+use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\SlideGambarController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Web\BerandaController;
 use App\Http\Controllers\Web\BeritaController as WebBeritaController;
+use App\Http\Controllers\Web\KontakController;
+use App\Http\Controllers\Web\PengaduanController as WebPengaduanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +37,9 @@ Route::get('/berita', [WebBeritaController::class, 'index'])->name('web.berita')
 Route::get('/berita/{slug}', [WebBeritaController::class, 'show'])->name('web.slug.berita');
 Route::get('/cari-berita', [WebBeritaController::class, 'search'])->name('berita.search');
 
+Route::get('/kontak',[KontakController::class, 'index'])->name('web.kontak');
+Route::post('/kontak/store',[KontakController::class, 'store'])->name('web.kontak.store');
+
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -41,7 +47,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Admin
 Route::prefix('/admin')->group(function(){
-    Route::get('/beranda', [AdminBerandaController::class, 'index'])->name('admin.beranda');
+    Route::get('/beranda', [AdminBerandaController::class, 'index'])->name('admin.beranda');    
+    //pengaduan
+    Route::resource('/pengaduan', PengaduanController::class);
     //Berita
     Route::resource('berita', BeritaController::class);
     //slide gambar

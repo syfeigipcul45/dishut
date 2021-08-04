@@ -8,6 +8,7 @@
   <title>Dinas Kehutanan Prov. Kaltim | @yield('title')</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
 
   <!-- Favicons -->
   <link href="{{asset('web/img/favicon.png')}}" rel="icon">
@@ -67,18 +68,18 @@
               </li>
             </ul>
           </li>
-          
+
           <li><a href="portfolio.html">Portfolio</a></li>
           <li><a href="pricing.html">Pricing</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="{{route('web.kontak')}}" class="@yield('kontak')">Kontak</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
       <div class="header-social-links d-flex">
-        <a href="#" class="twitter"><i class="bu bi-twitter"></i></a>
+        <a href="{{url('login')}}">Log In</a>
         <a href="#" class="facebook"><i class="bu bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bu bi-instagram"></i></a>
         <a href="#" class="linkedin"><i class="bu bi-linkedin"></i></i></a>
@@ -172,12 +173,18 @@
   <script src="{{asset('web/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('web/vendor/glightbox/js/glightbox.min.js')}}"></script>
   <script src="{{asset('web/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-  <script src="{{asset('web/vendor/php-email-form/validate.js')}}"></script>
+  <!-- <script src="{{asset('web/vendor/php-email-form/validate.js')}}"></script> -->
   <script src="{{asset('web/vendor/swiper/swiper-bundle.min.js')}}"></script>
   <script src="{{asset('web/vendor/waypoints/noframework.waypoints.js')}}"></script>
 
   <!-- Template Main JS File -->
   <script src="{{asset('web/js/main.js')}}"></script>
+
+  <!-- Alert -->
+  <link rel="stylesheet" type="text/css" href="{{asset('alert/css/iziToast.min.css')}}">
+  <!-- Alert -->
+  <script src="{{asset('alert/js/iziToast.min.js') }}"></script>
+
 
 </body>
 
