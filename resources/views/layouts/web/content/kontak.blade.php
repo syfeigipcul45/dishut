@@ -18,8 +18,8 @@ active
       <div class="d-flex justify-content-between align-items-center">
         <h2>Kontak</h2>
         <ol>
-          <li><a href="{{url('')}}">Beranda</a></li>
-          <li>Kontak</li>
+          <li><a href="{{url('')}}">Kontak</a></li>
+          <li>Pengaduan</li>
         </ol>
       </div>
 

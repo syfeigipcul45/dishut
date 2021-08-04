@@ -2,13 +2,15 @@
 
 use App\Http\Controllers\Admin\BerandaController as AdminBerandaController;
 use App\Http\Controllers\Admin\BeritaController;
+use App\Http\Controllers\Admin\BidangController;
 use App\Http\Controllers\Admin\PengaduanController;
+use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\SlideGambarController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Web\BerandaController;
 use App\Http\Controllers\Web\BeritaController as WebBeritaController;
 use App\Http\Controllers\Web\KontakController;
-use App\Http\Controllers\Web\PengaduanController as WebPengaduanController;
+use App\Http\Controllers\Web\MenuController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +42,9 @@ Route::get('/cari-berita', [WebBeritaController::class, 'search'])->name('berita
 Route::get('/kontak',[KontakController::class, 'index'])->name('web.kontak');
 Route::post('/kontak/store',[KontakController::class, 'store'])->name('web.kontak.store');
 
+Route::get('/profil/{slug}',[MenuController::class, 'show'])->name('web.slug.profil');
+Route::get('/bidang/{slug}',[MenuController::class, 'show_bidang'])->name('web.slug.bidang');
+
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -51,10 +56,14 @@ Route::prefix('/admin')->group(function(){
     //pengaduan
     Route::resource('/pengaduan', PengaduanController::class);
     //Berita
-    Route::resource('berita', BeritaController::class);
+    Route::resource('/berita', BeritaController::class);
     //slide gambar
     Route::get('/slide-gambar', [SlideGambarController::class, 'index'])->name('slide.index');
     Route::post('/slide-gambar/store', [SlideGambarController::class, 'store'])->name('slide.store');
     Route::post('/slide-gambar/{id}', [SlideGambarController::class, 'destroy'])->name('slide.destroy');
     Route::post('/slide-gambar/{id}/update', [SlideGambarController::class, 'update'])->name('slide.update');
+    //profil
+    Route::resource('/profil', ProfilController::class);
+    //Bidang
+    Route::resource('/bidang', BidangController::class);
 });

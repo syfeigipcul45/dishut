@@ -18,8 +18,8 @@ active
             <div class="d-flex justify-content-between align-items-center">
                 <h2>Daftar Berita</h2>
                 <ol>
-                    <li><a href="{{url('')}}">Beranda</a></li>
-                    <li>Berita</li>
+                    <li><a href="{{url('')}}">Berita</a></li>
+                    <li>Daftar Berita</li>
                 </ol>
             </div>
 

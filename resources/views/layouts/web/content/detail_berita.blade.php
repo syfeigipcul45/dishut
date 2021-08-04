@@ -16,10 +16,10 @@ active
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h2>Berita</h2>
+                <h2>Detail Berita</h2>
                 <ol>
-                    <li><a href="{{url('')}}">Beranda</a></li>
-                    <li>Berita</li>
+                    <li><a href="{{url('')}}">Berita</a></li>
+                    <li>Detail Berita</li>
                 </ol>
             </div>
 

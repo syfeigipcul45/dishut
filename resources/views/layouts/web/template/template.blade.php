@@ -10,9 +10,9 @@
   <meta content="" name="keywords">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-  <!-- Favicons -->
-  <link href="{{asset('web/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('web/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <!-- Favicon-->
+  <link rel="icon" href="{{asset('admin/images/logo.png')}}" type="image/x-icon">
+  <link href="{{asset('admin/images/logo.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -44,45 +44,50 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html"><span>Com</span>pany</a></h1>
+      <h1 class="logo me-auto"><a class="logo me-auto me-lg-0"><img src="{{asset('web/img/logo_login.png')}}" alt="" class="img-fluid"></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a href="{{url('')}}" class="@yield('beranda')">Beranda</a></li>
           <li><a href="{{route('web.berita')}}" class="@yield('berita')">Berita</a></li>
-          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#" class="@yield('profil')"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="team.html">Team</a></li>
-              <li><a href="testimonials.html">Testimonials</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
+              @inject('profil', 'App\Models\Menu')
+              @php $sub_menu = $profil::where('menu','profil')->get(); @endphp
+              @foreach($sub_menu as $item)
+              <li><a href="{{route('web.slug.profil', $item->slug_sub_menu)}}">{{$item->sub_menu}}</a></li>
+              @endforeach
+
+              <!-- <li><a href="team.html">Visi dan Misi</a></li>
+              <li><a href="testimonials.html">Struktur Organisasi</a></li> -->
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="@yield('bidang')"><span>Bidang</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              @inject('bidang', 'App\Models\Menu')
+              @php $sub_menu = $bidang::where('menu','bidang')->get(); @endphp
+              @foreach($sub_menu as $item)
+              <li><a href="{{route('web.slug.bidang', $item->slug_sub_menu)}}">{{$item->sub_menu}}</a></li>
+              @endforeach
             </ul>
           </li>
 
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="portfolio.html">Data Kehutanan</a></li>
           <li><a href="{{route('web.kontak')}}" class="@yield('kontak')">Kontak</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
+
       <div class="header-social-links d-flex">
-        <a href="{{url('login')}}">Log In</a>
-        <a href="#" class="facebook"><i class="bu bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bu bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bu bi-linkedin"></i></i></a>
+        @guest
+        <a href="{{ url('/login') }}" class="facebook"><i class="bi bi-arrow-bar-right"> Login</i></a>
+        @else
+        <a href="{{ url('/admin/beranda/') }}" class="facebook"><i class="bi bi-arrow-bar-right"> Dashboard</i></a>
+        @endguest
       </div>
 
     </div>
@@ -98,11 +103,9 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Company</h3>
+            <h3>Dinas Kehutanan<br>Prov. Kaltim</h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
+              Jl. Kesuma Bangsa, Sungai Pinang Luar, Kec. Samarinda Ulu, Kota Samarinda, Kalimantan Timur 75124 <br><br>
               <strong>Phone:</strong> +1 5589 55488 55<br>
               <strong>Email:</strong> info@example.com<br>
             </p>
@@ -146,22 +149,15 @@
 
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
-          &copy; Copyright <strong><span>Company</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>Dinas Kehutanan Prov. Kalimantan Timur</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
           <!-- You can delete the links only if you purchased the pro version. -->
           <!-- Licensing information: https://bootstrapmade.com/license/ -->
           <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/company-free-html-bootstrap-template/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
         </div>
-      </div>
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
   </footer><!-- End Footer -->

@@ -147,51 +147,17 @@
                             <span>Slide Gambar</span>
                         </a>
                     </li>
-                    <li class="">
+                    <li class="@yield('halaman_web')">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">local_activity</i>
                             <span>Halaman Web</span>
                         </a>
                         <ul class="ml-menu">
-                            <li class="">
-                                <a href="">Slide Gambar</a>
+                            <li class="@yield('profil')">
+                                <a href="{{route('profil.index')}}">Profil</a>
                             </li>
-                            <li class="">
-                                <a href="">Jabatan</a>
-                            </li>
-                            <li class="">
-                                <a href="">Pangkat & Golongan</a>
-                            </li>
-                            <li class="">
-                                <a href="">Pejabat Berwenang</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">local_activity</i>
-                            <span>Kegiatan</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li class="">
-                                <a href="">Data Kegiatan</a>
-                            </li>
-                            <li class="">
-                                <a href="">Uraian Kegiatan</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
-                            <span>SPT</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li class="">
-                                <a href="">Input SPT</a>
-                            </li>
-                            <li class="">
-                                <a href="">Lihat SPT</a>
+                            <li class="@yield('bidang')">
+                                <a href="{{route('bidang.index')}}">Bidang</a>
                             </li>
                         </ul>
                     </li>
