@@ -27,6 +27,10 @@
   <link href="{{asset('web/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{asset('web/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
+  <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
   <!-- Template Main CSS File -->
   <link href="{{asset('web/css/style.css')}}" rel="stylesheet">
 
@@ -74,7 +78,7 @@
             </ul>
           </li>
 
-          <li><a href="portfolio.html">Data Kehutanan</a></li>
+          <li><a href="{{route('web.data-kehutanan')}}" class="@yield('data-kehutanan')">Data Kehutanan</a></li>
           <li><a href="{{route('web.kontak')}}" class="@yield('kontak')">Kontak</a></li>
 
         </ul>
@@ -106,41 +110,14 @@
             <h3>Dinas Kehutanan<br>Prov. Kaltim</h3>
             <p>
               Jl. Kesuma Bangsa, Sungai Pinang Luar, Kec. Samarinda Ulu, Kota Samarinda, Kalimantan Timur 75124 <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Phone:</strong> (0541) 741963 - 741803 - 741807<br>Fax : 0541-736003<br>
+              <strong>Email:</strong> dishut.kaltim@gmail.com - dishut.ppid@gmail.com<br>
             </p>
           </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
+          <div class="col-lg-9 col-md-6 footer-links">
+            <iframe style="border:0; width: 100%; height: 300px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.672014843328!2d117.14704221542426!3d-0.49067363541574044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67f12db104b9d%3A0x3e75c847d9859547!2sDinas%20Kehutanan%20Provinsi%20Kaltim!5e0!3m2!1sid!2sid!4v1628042763806!5m2!1sid!2sid" frameborder="0" allowfullscreen></iframe>
           </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-
         </div>
       </div>
     </div>
@@ -172,6 +149,9 @@
   <!-- <script src="{{asset('web/vendor/php-email-form/validate.js')}}"></script> -->
   <script src="{{asset('web/vendor/swiper/swiper-bundle.min.js')}}"></script>
   <script src="{{asset('web/vendor/waypoints/noframework.waypoints.js')}}"></script>
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+
 
   <!-- Template Main JS File -->
   <script src="{{asset('web/js/main.js')}}"></script>

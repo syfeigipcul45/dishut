@@ -161,6 +161,12 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="@yield('data_kehutanan')">
+                        <a href="{{route('data-kehutanan.index')}}">
+                            <i class="material-icons">article</i>
+                            <span>Data Kehutanan</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->

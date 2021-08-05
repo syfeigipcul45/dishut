@@ -49,13 +49,13 @@ active
               <div class="col-lg-4 info mt-4 mt-lg-0">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>info@example.com<br>contact@example.com</p>
+                <p>dishut.kaltim@gmail.com<br>dishut.ppid@gmail.com</p>
               </div>
 
               <div class="col-lg-4 info mt-4 mt-lg-0">
                 <i class="bi bi-phone"></i>
                 <h4>Call:</h4>
-                <p>+1 5589 55488 51<br>+1 5589 22475 14</p>
+                <p>(0541) 741963 - 741803 - 741807<br>Fax : 0541-736003</p>
               </div>
             </div>
           </div>
