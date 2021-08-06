@@ -28,7 +28,17 @@ class DataKehutananController extends Controller
      */
     public function index()
     {
-        $data = DB::table('tabel_data_kehutanan')->join('tabel_kategori_dokumen', 'tabel_data_kehutanan.id_kategori', '=', 'tabel_kategori_dokumen.id')->orderBy('tabel_data_kehutanan.nama_dokumen', 'asc')->get();
+        $data = DB::table('tabel_data_kehutanan')
+            ->join('tabel_kategori_dokumen', 'tabel_data_kehutanan.id_kategori', '=', 'tabel_kategori_dokumen.id')
+            ->select(
+                'tabel_data_kehutanan.id',
+                'tabel_data_kehutanan.nama_dokumen',
+                'tabel_data_kehutanan.file_dokumen',
+                'tabel_data_kehutanan.id_kategori',
+                'tabel_kategori_dokumen.nama_kategori'
+            )
+            ->orderBy('tabel_data_kehutanan.nama_dokumen', 'asc')
+            ->get();
         $kategori = KategoriDokumen::orderBy('nama_kategori', 'asc')->get();
         return view('layouts.admin.content.data-kehutanan.index', compact('data', 'kategori'));
     }
@@ -53,7 +63,7 @@ class DataKehutananController extends Controller
     {
         $file = $request->file('file_dokumen');
         $nama_file = time() . "_" . $file->getClientOriginalName();
-        $tujuan_upload = 'data-kehutanan';
+        $tujuan_upload = public_path('data-kehutanan');
         $file->move($tujuan_upload, $nama_file);
 
         $data = new DataKehutanan();
@@ -73,7 +83,7 @@ class DataKehutananController extends Controller
      */
     public function show($id)
     {
-        $data = DataKehutanan::find($id);
+        $data = DataKehutanan::where('id',$id)->first();
         return view('layouts.admin.content.data-kehutanan.show', compact('data'));
     }
 
@@ -98,12 +108,12 @@ class DataKehutananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = DataKehutanan::find($id);
-        $upload = $request->hasFile('file_dokumen');
+        $data = DataKehutanan::where('id',$id)->first();
+        $upload = $request->hasFile('file_dokumen_edit');
         if ($upload) {
-            $file = $request->file('file_dokumen');
+            $file = $request->file('file_dokumen_edit');
             $nama_file = time() . "_" . $file->getClientOriginalName();
-            $tujuan_upload = 'data-kehutanan';
+            $tujuan_upload = public_path('data-kehutanan');
             $file_path = public_path('data-kehutanan/' . $data->file_dokumen);
             if (File::exists($file_path)) {
                 $e = File::delete($file_path);
@@ -111,8 +121,8 @@ class DataKehutananController extends Controller
             $file->move($tujuan_upload, $nama_file);
             $data->file_dokumen = $nama_file;
         }
-        $data->id_kategori = $request->id_kategori;
-        $data->nama_dokumen = $request->nama_dokumen;
+        $data->id_kategori = $request->id_kategori_edit;
+        $data->nama_dokumen = $request->nama_dokumen_edit;
         $data->save();
 
         return redirect()->route('data-kehutanan.index')->with('success', 'Data Berhasil Diubah');

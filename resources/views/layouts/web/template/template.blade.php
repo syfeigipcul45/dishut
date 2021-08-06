@@ -85,15 +85,6 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-
-      <div class="header-social-links d-flex">
-        @guest
-        <a href="{{ url('/login') }}" class="facebook"><i class="bi bi-arrow-bar-right"> Login</i></a>
-        @else
-        <a href="{{ url('/admin/beranda/') }}" class="facebook"><i class="bi bi-arrow-bar-right"> Dashboard</i></a>
-        @endguest
-      </div>
-
     </div>
   </header><!-- End Header -->
 

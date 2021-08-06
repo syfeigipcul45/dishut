@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BerandaController as AdminBerandaController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\BidangController;
 use App\Http\Controllers\Admin\DataKehutananController;
+use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\SlideGambarController;
@@ -31,22 +32,21 @@ Route::get('login', [AuthController::class, 'showFormLogin'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
 Route::get('register', [AuthController::class, 'register']);
 Route::group(['middleware' => 'auth'], function () {
- 
+
     Route::get('home', [HomeController::class, 'index'])->name('home');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
- 
 });
 
-Route::get('/',[BerandaController::class, 'index'])->name('beranda');
+Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 Route::get('/berita', [WebBeritaController::class, 'index'])->name('web.berita');
 Route::get('/berita/{slug}', [WebBeritaController::class, 'show'])->name('web.slug.berita');
 Route::get('/cari-berita', [WebBeritaController::class, 'search'])->name('berita.search');
 
-Route::get('/kontak',[KontakController::class, 'index'])->name('web.kontak');
-Route::post('/kontak/store',[KontakController::class, 'store'])->name('web.kontak.store');
+Route::get('/kontak', [KontakController::class, 'index'])->name('web.kontak');
+Route::post('/kontak/store', [KontakController::class, 'store'])->name('web.kontak.store');
 
-Route::get('/profil/{slug}',[MenuController::class, 'show'])->name('web.slug.profil');
-Route::get('/bidang/{slug}',[MenuController::class, 'show_bidang'])->name('web.slug.bidang');
+Route::get('/profil/{slug}', [MenuController::class, 'show'])->name('web.slug.profil');
+Route::get('/bidang/{slug}', [MenuController::class, 'show_bidang'])->name('web.slug.bidang');
 
 Route::get('/file-kehutanan', [WebDataKehutananController::class, 'index'])->name('web.data-kehutanan');
 Route::get('/data-kehutanan/pencarian', [WebDataKehutananController::class, 'searchByKategori'])->name('web.data-kehutanan.searchByKategori');
@@ -57,8 +57,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // Admin
-Route::prefix('/admin')->group(function(){
-    Route::get('/beranda', [AdminBerandaController::class, 'index'])->name('admin.beranda');    
+Route::prefix('/admin')->group(function () {
+    Route::get('/beranda', [AdminBerandaController::class, 'index'])->name('admin.beranda');
     //pengaduan
     Route::resource('/pengaduan', PengaduanController::class);
     //Berita
@@ -79,4 +79,6 @@ Route::prefix('/admin')->group(function(){
     Route::post('/data-kehutanan/{id}/update', [DataKehutananController::class, 'update'])->name('data-kehutanan.update');
     Route::get('/data-kehutanan/{id}/show', [DataKehutananController::class, 'show'])->name('data-kehutanan.show');
     Route::get('/data-kehutanan/pencarian', [DataKehutananController::class, 'searchByKategori'])->name('data-kehutanan.searchByKategori');
+    //Kategori Dokumen
+    Route::resource('/kategori-dokumen', KategoriController::class);
 });

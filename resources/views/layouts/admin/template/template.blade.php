@@ -167,6 +167,12 @@
                             <span>Data Kehutanan</span>
                         </a>
                     </li>
+                    <li class="@yield('kategori_dokumen')">
+                        <a href="{{route('kategori-dokumen.index')}}">
+                            <i class="material-icons">article</i>
+                            <span>Kategori Dokumen</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->

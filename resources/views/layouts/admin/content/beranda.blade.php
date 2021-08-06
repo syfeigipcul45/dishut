@@ -16,7 +16,7 @@ active
         </div>
 
         <!-- Widgets -->
-        <div class="row clearfix">
+        <!-- <div class="row clearfix">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box bg-pink hover-expand-effect">
                     <div class="icon">
@@ -50,7 +50,7 @@ active
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- #END# Widgets -->
     </div>
 </section>

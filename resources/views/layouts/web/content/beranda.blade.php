@@ -20,7 +20,7 @@ active
                 @else
                     @php $active = ''; @endphp
                 @endif
-                <div class="carousel-item {{$active}}" style="background-image: url(web/slide-gambar/{{$item->file_gambar}});">
+                <div class="carousel-item {{$active}}" style="background-image: url(public/web/slide-gambar/{{$item->file_gambar}});">
                     <div class="carousel-container">
                         <!-- <div class="carousel-content animate__animated animate__fadeInUp">
                             <h2>Sequi ea ut et est quaerat</h2>

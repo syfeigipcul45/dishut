@@ -53,7 +53,7 @@ class SlideGambarController extends Controller
         if ($file) {
             $file = $request->file('file_gambar');
             $nama_file = time() . "_" . $file->getClientOriginalName();
-            $tujuan_upload = 'web/slide-gambar';
+            $tujuan_upload = public_path('web/slide-gambar');
             $file->move($tujuan_upload, $nama_file);
             $slide->file_gambar = $nama_file;
             $slide->save();
@@ -97,7 +97,7 @@ class SlideGambarController extends Controller
         if ($file) {
             $file = $request->file('file_gambar');
             $nama_file = time() . "_" . $file->getClientOriginalName();
-            $tujuan_upload = 'web/slide-gambar';
+            $tujuan_upload = public_path('web/slide-gambar');
 
             $image_path = public_path('web/slide-gambar/' . $slide->file_gambar);
             if (File::exists($image_path)) {

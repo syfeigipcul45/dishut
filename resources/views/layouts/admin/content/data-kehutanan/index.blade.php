@@ -4,7 +4,7 @@
 Daftar Data Kehutanan
 @endsection
 
-@section('slide')
+@section('data_kehutanan')
 active
 @endsection
 
@@ -76,13 +76,13 @@ active
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-2 col-form-label" style="font-weight: bold;">Nama Dokumen</label>
                                                                         <div class="col-sm-10">
-                                                                            <input type="text" class="form-control" name="nama_dokumen" placeholder="Nama Dokumen" value="{{ $item->nama_dokumen }}" required>
+                                                                            <input type="text" class="form-control" name="nama_dokumen_edit" placeholder="Nama Dokumen" value="{{ $item->nama_dokumen }}" required>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-2 col-form-label" style="font-weight: bold;">Kategori Dokumen</label>
                                                                         <div class="col-sm-10">
-                                                                            <select class="form-control show-tick" name="id_kategori" required>
+                                                                            <select class="form-control show-tick" name="id_kategori_edit" required>
                                                                                 @foreach($kategori as $data)                                                                                
                                                                                 <option value="{{$data->id}}" <?php if($item->id_kategori == $data->id) echo "selected"; ?> >{{$data->nama_kategori}}</option>
                                                                                 @endforeach
@@ -93,7 +93,7 @@ active
                                                                         <label class="col-sm-2 col-form-label" style="font-weight: bold;">File Dokumen</label>
                                                                         <div class="col-sm-10">
                                                                             <span style="font-size: 12px; font-style: italic; color: red;">*) File harus berupa .pdf, maksimal file sebesar 5 MB</span>
-                                                                            <input type="file" class="form-control" name="file_dokumen" id="file_edit{{$item->id}}" accept=".pdf" >
+                                                                            <input type="file" class="form-control" name="file_dokumen_edit" id="file_edit{{$item->id}}" accept=".pdf" >
                                                                             <embed type="application/pdf" src="{{asset('data-kehutanan/'.$item->file_dokumen)}}" id="output_edit{{$item->id}}" width="400px" height="200px"></embed>
                                                                         </div>
                                                                     </div>
