@@ -28,14 +28,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Web
-Route::get('login', [AuthController::class, 'showFormLogin'])->name('login');
-Route::post('login', [AuthController::class, 'login']);
-Route::get('register', [AuthController::class, 'register']);
-Route::group(['middleware' => 'auth'], function () {
+// Route::get('login', [AuthController::class, 'showFormLogin'])->name('login');
+// Route::post('login', [AuthController::class, 'login']);
+// Route::get('register', [AuthController::class, 'register']);
+// Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('home', [HomeController::class, 'index'])->name('home');
-    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-});
+//     Route::get('home', [HomeController::class, 'index'])->name('home');
+//     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+// });
 
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 Route::get('/berita', [WebBeritaController::class, 'index'])->name('web.berita');
@@ -51,7 +51,7 @@ Route::get('/bidang/{slug}', [MenuController::class, 'show_bidang'])->name('web.
 Route::get('/file-kehutanan', [WebDataKehutananController::class, 'index'])->name('web.data-kehutanan');
 Route::get('/data-kehutanan/pencarian', [WebDataKehutananController::class, 'searchByKategori'])->name('web.data-kehutanan.searchByKategori');
 
-// Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

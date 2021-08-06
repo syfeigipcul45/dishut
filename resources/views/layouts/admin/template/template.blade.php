@@ -113,7 +113,16 @@
                         <ul class="dropdown-menu pull-right">
                             <!-- <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
                             <li role="separator" class="divider"></li> -->
-                            <li><a href="{{ route('logout') }}"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    <i class="material-icons">input</i> Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                                <!-- <a href="{{ route('logout') }}"><i class="material-icons">input</i>Sign Out</a> -->
+                            </li>
                         </ul>
                     </div>
                 </div>
