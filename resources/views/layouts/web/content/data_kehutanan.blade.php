@@ -68,7 +68,7 @@ active
                                             <td>{{$no++}}.</td>
                                             <td>{{$item->nama_dokumen}}</td>
                                             <td>
-                                                <a href="{{route('data-kehutanan.show',$item->id)}}" target="_blank" class="btn btn-info btn-sm">Lihat Data</a>
+                                                <a href="{{route('web.data-kehutanan.show',$item->id)}}" target="_blank" class="btn btn-info btn-sm">Lihat Data</a>
                                             </td>
                                         </tr>
                                         @endforeach

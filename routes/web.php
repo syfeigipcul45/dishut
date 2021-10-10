@@ -49,6 +49,7 @@ Route::get('/profil/{slug}', [MenuController::class, 'show'])->name('web.slug.pr
 Route::get('/bidang/{slug}', [MenuController::class, 'show_bidang'])->name('web.slug.bidang');
 
 Route::get('/file-kehutanan', [WebDataKehutananController::class, 'index'])->name('web.data-kehutanan');
+Route::get('/data-kehutanan/{id}/show', [WebDataKehutananController::class, 'show'])->name('web.data-kehutanan.show');
 Route::get('/data-kehutanan/pencarian', [WebDataKehutananController::class, 'searchByKategori'])->name('web.data-kehutanan.searchByKategori');
 
 Auth::routes();
