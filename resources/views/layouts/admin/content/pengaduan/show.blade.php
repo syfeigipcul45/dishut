@@ -16,41 +16,46 @@ active
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Edit Berita</h2>
+                        <h2>Pengaduan</h2>
                     </div>
                     <div class="body">
-                        <div class="col-sm-12">
-                            <h2 class="card-inside-title">Nama</h2>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" value="{{$pengaduan->nama}}" readonly>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <div class="col-sm-12">
+                                <h2 class="card-inside-title">Nama</h2>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" name="nama"  value="{{$pengaduan->nama}}" readonly>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <h2 class="card-inside-title">Email</h2>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" value="{{$pengaduan->email}}" readonly>
+                            <div class="col-sm-12">
+                                <h2 class="card-inside-title">Email</h2>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" name="email"  value="{{$pengaduan->email}}" readonly>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <h2 class="card-inside-title">Subjek</h2>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" value="{{$pengaduan->subjek}}" readonly>
+                            <div class="col-sm-12">
+                                <h2 class="card-inside-title">Subjek</h2>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" name="nama"  value="{{$pengaduan->subjek}}" readonly>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <h2 class="card-inside-title">Isi Pesan</h2>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <textarea name="isi_berita" id="tinymce" disabled>{{$pengaduan->isi_pesan}}</textarea>
+                            <div class="col-sm-12">
+                                <h2 class="card-inside-title">Isi Pesan</h2>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <textarea name="isi_pesan" id="tinymce">{{$pengaduan->isi_pesan}}</textarea>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <a href="{{route('pengaduan.index')}}" class="btn btn-warning waves-effect" role="button" aria-haspopup="true" aria-expanded="false">
+                                KEMBALI
+                            </a>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -67,6 +72,7 @@ active
         menubar: 'file edit view insert format tools table help',
         toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
         toolbar_sticky: true,
+        readonly: 1,
         autosave_ask_before_unload: true,
         autosave_interval: '30s',
         autosave_prefix: '{path}{query}-{id}-',

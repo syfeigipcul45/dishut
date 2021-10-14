@@ -26,7 +26,7 @@ class PengaduanController extends Controller
 
     public function show($id)
     {
-        $pengaduan = Pengaduan::find($id)->first();
+        $pengaduan = Pengaduan::where('id',$id)->first();
         return view('layouts.admin.content.pengaduan.show', compact('pengaduan'));
     }
 }
